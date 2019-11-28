@@ -20,3 +20,8 @@
 .App-link {
   color: #09d3ac;
 }
+
+.score {
+  color: #ff6347;
+  font-size: 20px;
+}
