@@ -1,36 +1,36 @@
-import React from 'react';
+import React, { useState } from 'react';
 import cats from '../data/cats.json';
 import './Vote.css';
 
 const Vote = () => {
 
-  let leftCat = cats[getRandomCat()];
-  let rightCat = cats[getRandomCat()];
+  const [randomLeftCat, setRandomLeftCat] = useState(showRandomCat(cats[getRandomCat()]))
+  const [randomRightCat, setRandomRightCat] = useState(showRandomCat(cats[getRandomCat()]))
+
+  const handleClick = () =>
+    setRandomLeftCat(cats[getRandomCat()]) + setRandomRightCat(cats[getRandomCat()])
 
   function getRandomCat() {
     const randomCat = Math.floor(Math.random() * Math.floor(cats.length));
     return randomCat; 
   }
 
-  function showRandomCat(cat) {
+  function showRandomCat(cat, handleClick) {
      return (
-    <div>
-      <img src={cat.url} alt="cute cat" key={cat.id}></img>
-      <p className="score">{cat.score} <i className="fas fa-heart"></i></p>
-    </div>
+      <div key={cat.id} onClick={handleClick}>
+        <img src={cat.url} alt="cute cat"></img>
+        <p className="score">{cat.score} <i className="fas fa-heart"></i></p>
+      </div>
     )
-  }
-
-  function handleClick() {
   }
 
   return (
     <div className="votecontainer">
       <div className="votecat leftcat">
-        {showRandomCat(leftCat)}
+        {showRandomCat(randomLeftCat, handleClick)}
       </div>
       <div className="votecat rightcat">
-        {showRandomCat(rightCat)}
+        {showRandomCat(randomRightCat, handleClick)}
       </div>
     </div>
   )
