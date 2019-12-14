@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './Vote.css';
 import Store from './Store';
 
 function Vote() {
@@ -34,7 +33,9 @@ function Vote() {
   function showRandomCat(cat) {
     return (
       <div key={cat.id}>
-        <img src={cat.url} alt="cute cat"></img>
+        <div className="cat-face">
+          <img src={cat.url} alt="cute cat"></img>
+        </div>
         <p className="score">{cat.score} <i className="fas fa-heart"></i></p>
       </div>
     )

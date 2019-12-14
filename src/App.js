@@ -3,7 +3,7 @@ import Header from './components/Header'
 import Routes from './components/Routes'
 import Store from './components/Store';
 import 'bootstrap/dist/css/bootstrap.css';
-import './App.css';
+import './App.scss';
 
 function App() {
   Store.getCats()
