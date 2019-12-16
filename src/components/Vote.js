@@ -3,20 +3,29 @@ import Store from './Store';
 
 function Vote() {
   const [allCats, setAllCats] = useState(Store.getCats())
+  const [duplicateCat, setDuplicateCat] = useState([])
   const [leftCat, setLeftCat] = useState([])
   const [rightCat, setRightCat] = useState([])
 
   function randomCats(array) {
     let randomNumber = Math.floor(Math.random() * array.length)
-    let randomCat = array[randomNumber]
-    return randomCat
-    
+    let randomCat = array[randomNumber];
+    if (duplicateCat.includes(randomCat)) {
+      return randomCats(allCats)
+    }
+    else {
+      return randomCat
+    }
   }
 
   useEffect(() => {
     setLeftCat(randomCats(allCats))
     setRightCat(randomCats(allCats))
   }, [allCats])
+
+  useEffect(() => {
+    setDuplicateCat([duplicateCat, leftCat, rightCat])
+  }, [leftCat, rightCat])
 
   function handleOnclickCat1() {
     leftCat.score = leftCat.score + 1
