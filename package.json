@@ -8,7 +8,7 @@
     "yarn": "2.4.x"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bootstrap": "^4.6.0",
     "firebase": "^8.2.10",
     "node-sass": "^5.0.0",
